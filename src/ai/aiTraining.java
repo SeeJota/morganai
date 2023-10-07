@@ -13,7 +13,7 @@ public class aiTraining{
         ArrayList<neuron> inputNurons = new ArrayList<>(Arrays.asList(new neuron(),
                                                                         new neuron()));
         //initializing values
-        foreach(neuron n : inputNurons){
+        for (neuron n : inputNurons){
             n.value = 1f;
             //n.initialize();
         }
@@ -25,12 +25,12 @@ public class aiTraining{
         ArrayList<neuron> outputNurons = new ArrayList<>(Arrays.asList(new neuron(0f,hiddenNuronLayer1, new ArrayList<>(.2f,.4f,.3f)),
                                                                         new neuron(0f,hiddenNuronLayer1, new ArrayList<>(.2f,.4f,.3f)));
         //computes hidden nurons
-        foreach(neuron n : hiddenNuronLayer1){
+        for (neuron n : hiddenNuronLayer1){
             n.compute();
 
         }
         //computes output nurons
-        foreach(neuron n : outputNurons){
+        for (neuron n : outputNurons){
             n.compute();
             System.out.println("nuron output = " + n.value);
         }
