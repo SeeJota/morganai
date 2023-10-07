@@ -23,7 +23,6 @@ public class aiFunctions {
         for(neuron n : OutputNuronArray){
             float error = (float)Math.pow((OutputNuronArray.get(i).value - DesiredValuesArray.get(i)), 2f);
             output.add(error);
-            System.out.println("### ### "+DesiredValuesArray.get(0));
             i++;
         }
         return output;
@@ -37,6 +36,7 @@ public class aiFunctions {
         int i = 0;
         for(neuron n : OutputNuronArray){
             float error = (OutputNuronArray.get(i).value - DesiredValuesArray.get(i));
+            System.out.println("### "+DesiredValuesArray.get(i));
             output.add(error);
         }
         return output;

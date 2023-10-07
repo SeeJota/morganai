@@ -24,12 +24,13 @@ public class aiTraining{
     }
     public static ArrayList<Float> GetDesiredValuesArray(){
         //return DesiredValues;
-        return new ArrayList<>(Arrays.asList(1f,1f));
+        ArrayList<Float> output =  new ArrayList<>(Arrays.asList(0f,1f));
+        return output;
     }
 
     public static void SetDesiredValues(){
         //same length as output nurons
-        DesiredValues = new ArrayList<>(Arrays.asList(0f,1f));
+        DesiredValues = new ArrayList<>(Arrays.asList(1f,1f));
     }
     public static void InitializeNetwork(){
 
@@ -105,7 +106,7 @@ public class aiTraining{
 
             ArrayList<neuron> proceedingNurons = hiddenNuronLayer1.get(i).getProceedingNurons();
             ArrayList<Float> weightsOfProceedingNurons = hiddenNuronLayer1.get(i).getWeightedInputOfInputNurons();
-            ArrayList<Float> errorCorrections = aiFunctions.ErrorOfOutput();
+            ArrayList<Float> errorCorrections = aiFunctions.ErrorOfOutputLiniar();
 
             //goes through all proceeding nurons connected to current output nuron
             for(int c = 0; c < weightsOfProceedingNurons.size(); c++){
@@ -115,10 +116,12 @@ public class aiTraining{
             }
 
         }
+        System.out.println("");
         //debug the weights for the inputs
         for(int i = 0; i < inputNurons.size(); i++) {
 
-                System.out.println("initial correctioin val " + aiFunctions.ErrorOfOutput().get(i));
+
+                System.out.println("initial correctioin val " + aiFunctions.ErrorOfOutputLiniar().get(i));
                 System.out.println(" for input " + i + "bias has been totally changed to" + inputNurons.get(i).bias);
             }
         }
