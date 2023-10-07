@@ -3,7 +3,8 @@ import java.util.ArrayList;
 import java.lang.Math;
 public class neuron{
 
-    private float bias = 0.0f;
+    public float bias = 0.0f;
+    public float lastBiasCorrectionValue = 0.0f;
     public float value = 0.0f;
     private ArrayList<neuron> inputNurons;
     private ArrayList<Float> weightedInputOfInputNurons;
@@ -36,6 +37,11 @@ public class neuron{
     public float getValue(){
         return value;
     }
-
+    public ArrayList<Float> getWeightedInputOfInputNurons(){
+        return weightedInputOfInputNurons;
+    }
+    public ArrayList<neuron> getProceedingNurons(){
+        return inputNurons;
+    }
 }
 
