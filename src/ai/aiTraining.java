@@ -9,13 +9,33 @@ public class aiTraining{
 
 
         //set up basic net work
-        ArrayList<neuron> inputNurons = new ArrayList<>(Arrays.asList(new neuron(), new neuron()));
 
-        ArrayList<neuron> hiddenNurons = new ArrayList<>(Arrays.asList(new neuron(), new neuron(),new neuron()));
+        ArrayList<neuron> inputNurons = new ArrayList<>(Arrays.asList(new neuron(),
+                                                                        new neuron()));
+        //initializing values
+        foreach(neuron n : inputNurons){
+            n.value = 1f;
+            //n.initialize();
+        }
 
-        ArrayList<neuron> outputNurons = new ArrayList<>(Arrays.asList(new neuron(), new neuron()));
+        ArrayList<neuron> hiddenNuronLayer1 = new ArrayList<>(Arrays.asList(new neuron(0f,inputNurons, new ArrayList<>(.2f,.4f)),
+                                                                        new neuron(0f,inputNurons, new ArrayList<>(.2f,.4f)),
+                                                                        new neuron(0f,inputNurons, new ArrayList<>(.2f,.4f))));
 
-        
+        ArrayList<neuron> outputNurons = new ArrayList<>(Arrays.asList(new neuron(0f,hiddenNuronLayer1, new ArrayList<>(.2f,.4f,.3f)),
+                                                                        new neuron(0f,hiddenNuronLayer1, new ArrayList<>(.2f,.4f,.3f)));
+        //computes hidden nurons
+        foreach(neuron n : hiddenNuronLayer1){
+            n.compute();
+
+        }
+        //computes output nurons
+        foreach(neuron n : outputNurons){
+            n.compute();
+            System.out.println("nuron output = " + n.value);
+        }
+
+
 
     }
 }
