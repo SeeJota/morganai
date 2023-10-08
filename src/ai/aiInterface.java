@@ -12,10 +12,10 @@ public class aiInterface{
 
 
     }
-    public ArrayList<ArrayList<neuron>> getNurons(){
+    public static ArrayList<ArrayList<neuron>> getNurons(){
         return aiTraining.networkNeurons;
     }
-    public void writeNeuronToFile(File file) throws IOException {
+    public static void writeNeuronToFile(File file) throws IOException {
         try (FileOutputStream fos = new FileOutputStream(file); //"/data/neuron_info.csv"
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             try {

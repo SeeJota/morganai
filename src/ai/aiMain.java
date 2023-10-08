@@ -8,7 +8,7 @@ public class aiMain{
 
         // read the files or what ever
 
-        //aiTraining.RunNetwork(loaded network goes here);
+        aiTraining.RunNetwork(aiInterface.getNurons());
         ArrayList<neuron> outputs =  aiTraining.GetOutputNuronArray();
 
         int nuronIndex = runNetwork(outputs);

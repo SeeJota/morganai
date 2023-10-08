@@ -11,7 +11,7 @@ public class aiTraining{
     static ArrayList<ArrayList<neuron>> networkNeurons;
 
     public static void main(String[] args){
-        InitializeNetwork(5,13,4);
+        InitializeNetwork(5,15,4);
         SetDesiredValues(new ArrayList<>(Arrays.asList(1f,0f,0f,1f)));
         LoadNetworkValues();
         RunNetwork();
@@ -28,12 +28,6 @@ public class aiTraining{
     }
     public static ArrayList<Float> GetDesiredValuesArray(){
         return DesiredValues;
-        //ArrayList<Float> output =  new ArrayList<>(Arrays.asList(0f,1f));
-        //return output;
-        //return DesiredValues;
-        //return DesiredValues;
-        ArrayList<Float> output =  new ArrayList<>(Arrays.asList(0f,1f));
-        return output;
     }
 
     public static void SetDesiredValues(ArrayList<Float> arr){
@@ -120,10 +114,10 @@ public class aiTraining{
         }
 
     }
-    public static void RunNetwork(ArrayList<neuron>[] network){
-        inputNurons = network[0];
-        hiddenNuronLayer1 = network[1];
-        outputNurons = network[2];
+    public static void RunNetwork(ArrayList<ArrayList<neuron>> network){
+        inputNurons = network.get(0);
+        hiddenNuronLayer1 = network.get(1);
+        outputNurons = network.get(2);
 
         //computes hidden nurons
         for (neuron n : hiddenNuronLayer1){
@@ -206,7 +200,7 @@ public class aiTraining{
         return weightsOfPrevB;
     }
     public void saveTrainingData(){
-
+        aiInterface.writeNeuronToFile(aiInterface.FILE_PATH);
     }
     public void loadTrainingData(){
 
