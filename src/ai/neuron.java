@@ -1,7 +1,8 @@
 package src.ai;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.lang.Math;
-public class neuron{
+public class neuron implements Serializable {
 
     public float bias = 0.0f;
     public float lastBiasCorrectionValue = 0.0f;
@@ -43,6 +44,14 @@ public class neuron{
     }
     public ArrayList<neuron> getProceedingNurons(){
         return inputNurons;
+    }
+    @Override
+    public String toString(){
+        return "Neuron{" +
+                "Bias='" + bias + '\'' +
+//                ", Input Neurons='" + inputNurons + '\'' +
+                ", weightedInputOfInputNeurons=" + weightedInputOfInputNurons +
+                "}";
     }
 }
 
