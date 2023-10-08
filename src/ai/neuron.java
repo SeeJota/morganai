@@ -32,6 +32,7 @@ public class neuron{
     }
     public void initialize(){
         value = (float)(Math.random());
+
     }
 
     public float getValue(){
