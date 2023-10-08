@@ -128,9 +128,51 @@ public class aiTraining{
         //computes output nurons
         for (neuron n : outputNurons){
             n.compute();
-            System.out.println("nuron output = " + n.value);
+            //System.out.println("nuron output = " + n.value);
         }
 
+    }
+    public static void RunNetwork(ArrayList<ArrayList<neuron>> network, ArrayList<Float> inputArray){
+
+        if (network != null) {
+
+            inputNurons = network.get(0);
+            hiddenNuronLayer1 = network.get(1);
+            outputNurons = network.get(2);
+        }
+        else{
+            System.out.println("new network created");
+            InitializeNetwork(5,15,4);
+        }
+
+
+        for(int i = 0; i < inputNurons.size() && i < inputArray.size(); i++){
+            if(inputArray.get(i)!=null)
+                inputNurons.get(i).value = inputArray.get(i);
+            else{
+                inputNurons.get(i).value = 0f;
+            }
+        }
+
+        //computes hidden nurons
+        for (neuron n : hiddenNuronLayer1){
+            n.compute();
+
+        }
+        //computes output nurons
+        for (neuron n : outputNurons){
+            n.compute();
+            //System.out.println("nuron output = " + n.value);
+        }
+
+        networkNeurons = new ArrayList<>();
+        networkNeurons.add(inputNurons);
+        networkNeurons.add(hiddenNuronLayer1);
+        networkNeurons.add(outputNurons);
+        try{saveTrainingData();}
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     public static void LoadNetworkValues(){
         System.out.println("loaded values to network");
@@ -200,7 +242,7 @@ public class aiTraining{
         }
         return weightsOfPrevB;
     }
-    public void saveTrainingData() throws IOException {
+    public static void saveTrainingData() throws IOException {
         aiInterface.writeNeuronToFile();
     }
     public void loadTrainingData(){

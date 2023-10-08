@@ -1,26 +1,35 @@
 package src.ai;
 import java.lang.Math;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class aiMain{
     public static void main(String[] args){
 
 
         // read the files
-
-        aiTraining.RunNetwork(aiInterface.getNurons());
+        ArrayList<Float> inputs = new ArrayList<>(Arrays.asList(1f,0f,0f,1f));
+        aiTraining.RunNetwork(aiInterface.getNurons(),inputs);
         ArrayList<neuron> outputs =  aiTraining.GetOutputNuronArray();
 
-        int nuronIndex = runNetwork(outputs);
+        int nuronIndex = -1;
+        nuronIndex = runNetwork(outputs);
         float uncertainty = getUncertainty(outputs);
+
+        System.out.println("It was neuron " + nuronIndex + " with an uncertainty of " + uncertainty);
+
+
     }
     public static int runNetwork(ArrayList<neuron> outputs){
 
-        //get the maximum value as the responce
-        int maxNuronIndex = -1;
-        for(int i = 0; i < outputs.size(); i++){
 
+
+        //get the maximum value as the responce
+        int maxNuronIndex = 0;
+        for(int i = 0; i < outputs.size(); i++){
+            System.out.println("nuron "+ i +" val of "+outputs.get(i).value);
             if(outputs.get(i).value > outputs.get(maxNuronIndex).value){
+
                 maxNuronIndex = i;
             }
         }

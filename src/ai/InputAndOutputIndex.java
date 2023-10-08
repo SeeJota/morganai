@@ -16,4 +16,20 @@ public class InputAndOutputIndex {
             "number"
 
     };
+    String[] Outputs = new String[]{
+            "AAA",
+            "BBB",
+            "CCC",
+            "DDD",
+            "EEE",
+            "FFF",
+            "GGG",
+            "HHH",
+            "III",
+            "JJJ",
+            "KKK",
+            "LLL"
+
+    };
+
 }
