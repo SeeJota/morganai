@@ -174,14 +174,7 @@ public class aiTraining{
             System.out.println("nuron output = " + n.value);
         }
 
-        networkNeurons = new ArrayList<>();
-        networkNeurons.add(inputNurons);
-        networkNeurons.add(hiddenNuronLayer1);
-        networkNeurons.add(outputNurons);
-        try{saveTrainingData();}
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
     }
     public static void LoadNetworkValues(){
         System.out.println("loaded values to network");

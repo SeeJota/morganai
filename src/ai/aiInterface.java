@@ -14,7 +14,7 @@ public class aiInterface{
     }
 
 
-    public static ArrayList<ArrayList<neuron>> getNurons(){
+    private static ArrayList<ArrayList<neuron>> getNurons(){
         return aiTraining.networkNeurons;
     }
     public static void writeNeuronToFile() throws IOException {

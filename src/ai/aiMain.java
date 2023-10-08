@@ -11,13 +11,18 @@ public class aiMain{
         // read the files
         String inputStr = "I'm injured, Contract?";
         System.out.println("accociated inputs are ### " + ConvertInput(inputStr));
-        aiTraining.RunNetwork(aiInterface.getNurons(),ConvertInput(inputStr));
+        try {
+            aiTraining.RunNetwork(aiInterface.readObjFromFile(),ConvertInput(inputStr));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         ArrayList<neuron> outputs =  aiTraining.GetOutputNuronArray();
 
         int nuronIndex = -1;
         nuronIndex = runNetwork(outputs);
         float uncertainty = getUncertainty(outputs);
-        System.out.println("Does the network do neuron? Answer: " + aiInterface.getNurons());
         System.out.println("It was neuron " + nuronIndex + " with an uncertainty of " + uncertainty);
         ArrayList<ArrayList<neuron>> test = new ArrayList<>();
 
