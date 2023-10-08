@@ -54,10 +54,22 @@ public class InputAndOutputIndex {
             "GGG"
 
     };
+    public static String[] stringOutputs = new String[]{
+            "Text A",
+            "Text B",
+            "Text C",
+            "Text D",
+            "Text E",
+            "Text F",
+            "Text G"
+
+    };
+
     public static String[][] TrainingData= aiInterface.getTrainingData(new File("Training_Data.csv"));
 //            new String[][]{
 //        {"I'm injured, Contract?","AAA-well if your injured you should call a legal asistant"},
+//        {"What is the Statute?","BBB-this is the statute #### "}
 //    };
-    public static float[][] TrainingDataOut=  aiInterface.setTrainingOutputs(TrainingData,7,3f);
+    public static float[][] TrainingDataOut=  aiInterface.setTrainingOutputs(TrainingData,7,.1f);
 
 }

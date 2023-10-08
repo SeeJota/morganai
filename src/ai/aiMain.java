@@ -6,11 +6,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class aiMain{
+
+    public static String theReturn = "";
+
     public static void main(String[] args){
 
 
         // read the files
-        String inputStr = "Can I know my status of my case?";
+        String inputStr = "Morgan and Morgan?";
         System.out.println("accociated inputs are ### " + ConvertInput(inputStr));
         try {
             aiTraining.RunNetwork(aiInterface.readObjFromFile(),ConvertInput(inputStr));
@@ -36,6 +39,8 @@ public class aiMain{
             throw new RuntimeException(e);
         }
 
+
+
 //        String[][] testArr = new String[][]{
 //                {"I'm injured, Contract?","AAA-well if your injured you should call a legal asistant"},
 //                {"What is the Statute?","BBB-this is the statute #### "}};
@@ -47,6 +52,38 @@ public class aiMain{
 //        System.out.println("Hollo I am here with OUTPUTRESULTIES: " +
 //                printDoubleFloat(outputArr));
 //        System.out.println("\nHollo I am here with the array Length: " + outputArr.length);
+
+
+
+    }
+    public String getAiResponce(String inputStr){
+
+        System.out.println("accociated inputs are ### " + ConvertInput(inputStr));
+        try {
+            aiTraining.RunNetwork(aiInterface.readObjFromFile(),ConvertInput(inputStr));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        ArrayList<neuron> outputs =  aiTraining.GetOutputNuronArray();
+
+        int nuronIndex = -1;
+        nuronIndex = runNetwork(outputs);
+        float uncertainty = getUncertainty(outputs);
+        System.out.println("It was neuron " + nuronIndex);// + " with an uncertainty of " + uncertainty);
+        ArrayList<ArrayList<neuron>> test = new ArrayList<>();
+
+        try {
+            test = aiInterface.readObjFromFile();
+//            System.out.println("I tried to readered");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        theReturn = InputAndOutputIndex.stringOutputs[nuronIndex];
+        return theReturn;
     }
 
     public static String printDoubleString(String[][] array){

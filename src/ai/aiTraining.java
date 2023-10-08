@@ -21,12 +21,13 @@ public class aiTraining{
         LoadNetworkValues();
         RunNetwork();
 
-        for(int i = 0; i < 2000; i++){
+        for(int i = 0; i < 10000; i++){
             for(int j = 0; j < InputAndOutputIndex.TrainingData.length; j++){
-                SetDesiredValues(aiFunctions.floatArrayToArrayList(InputAndOutputIndex.TrainingDataOut[j]));
+                int x = (int)(Math.random()*InputAndOutputIndex.TrainingData.length);
+                SetDesiredValues(aiFunctions.floatArrayToArrayList(InputAndOutputIndex.TrainingDataOut[x]));
 
                 backPropigationOfBias();
-                RunNetwork(networkNeurons,aiMain.ConvertInput(InputAndOutputIndex.TrainingData[j][0]));
+                RunNetwork(networkNeurons,aiMain.ConvertInput(InputAndOutputIndex.TrainingData[x][0]));
                 //RunNetwork(aiInterface.getNurons(),ConvertInput(inputStr));
             }
 
