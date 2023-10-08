@@ -12,11 +12,17 @@ public class aiInterface{
 
 
     }
+
     public static ArrayList<ArrayList<neuron>> getNurons(){
         return aiTraining.networkNeurons;
     }
     public static void writeNeuronToFile(File file) throws IOException {
         try (FileOutputStream fos = new FileOutputStream(file); //"/data/neuron_info.csv"
+    private ArrayList<ArrayList<neuron>> getNurons(){
+        return aiTraining.networkNeurons;
+    }
+    public void writeNeuronToFile() throws IOException {
+        try (FileOutputStream fos = new FileOutputStream(FILE_PATH); //"/data/neuron_info.csv"
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             try {
                 fos.getChannel().truncate(0);
@@ -36,9 +42,9 @@ public class aiInterface{
         }
 
     }
-    public ArrayList<ArrayList<neuron>> readObjFromFile(File file) throws IOException, ClassNotFoundException{
+    public ArrayList<ArrayList<neuron>> readObjFromFile() throws IOException, ClassNotFoundException{
         ArrayList<ArrayList<neuron>> returnal = null;
-        try (FileInputStream fis = new FileInputStream(file); //"/data/neuron_info.csv"
+        try (FileInputStream fis = new FileInputStream(FILE_PATH); //"/data/neuron_info.csv"
              ObjectInputStream ois = new ObjectInputStream(fis)) {
 
             returnal = (ArrayList<ArrayList<neuron>>) ois.readObject();
