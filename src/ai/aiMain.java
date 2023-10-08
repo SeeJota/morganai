@@ -1,4 +1,5 @@
 package src.ai;
+import java.io.IOException;
 import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,9 +17,20 @@ public class aiMain{
         int nuronIndex = -1;
         nuronIndex = runNetwork(outputs);
         float uncertainty = getUncertainty(outputs);
-
+        System.out.println("Does the network do neuron? Answer: " + aiInterface.getNurons());
         System.out.println("It was neuron " + nuronIndex + " with an uncertainty of " + uncertainty);
+        ArrayList<ArrayList<neuron>> test = new ArrayList<>();
 
+        try {
+            test = aiInterface.readObjFromFile();
+//            System.out.println("I tried to readered");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("Did this explodedered? Answer: " + test);
 
     }
     public static ArrayList<Float> ConvertInput(String str){
