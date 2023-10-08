@@ -21,17 +21,15 @@ public class aiTraining{
         LoadNetworkValues();
         RunNetwork();
 
-        for(int i = 0; i < 100000; i++){
-            SetDesiredValues(aiFunctions.floatArrayToArrayList(InputAndOutputIndex.TrainingDataOut[1]));
+        for(int i = 0; i < 2000; i++){
+            for(int j = 0; j < InputAndOutputIndex.TrainingData.length; j++){
+                SetDesiredValues(aiFunctions.floatArrayToArrayList(InputAndOutputIndex.TrainingDataOut[j]));
 
-            backPropigationOfBias();
-            RunNetwork(networkNeurons,aiMain.ConvertInput(InputAndOutputIndex.TrainingData[1][0]));
+                backPropigationOfBias();
+                RunNetwork(networkNeurons,aiMain.ConvertInput(InputAndOutputIndex.TrainingData[j][0]));
+                //RunNetwork(aiInterface.getNurons(),ConvertInput(inputStr));
+            }
 
-            SetDesiredValues(aiFunctions.floatArrayToArrayList(InputAndOutputIndex.TrainingDataOut[0]));
-
-            backPropigationOfBias();
-            RunNetwork(networkNeurons,aiMain.ConvertInput(InputAndOutputIndex.TrainingData[0][0]));
-            //RunNetwork(aiInterface.getNurons(),ConvertInput(inputStr));
         }
 
         try{saveTrainingData();}

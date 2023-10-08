@@ -1,4 +1,5 @@
 package src.ai;
+import java.io.File;
 import java.io.IOException;
 import java.lang.Math;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ public class aiMain{
 
 
         // read the files
-        String inputStr = "Contract";
+        String inputStr = "Can I know my status of my case?";
         System.out.println("accociated inputs are ### " + ConvertInput(inputStr));
         try {
             aiTraining.RunNetwork(aiInterface.readObjFromFile(),ConvertInput(inputStr));
@@ -35,9 +36,41 @@ public class aiMain{
             throw new RuntimeException(e);
         }
 
-        System.out.println("Did this explodedered? Answer: " + test);
-
+//        String[][] testArr = new String[][]{
+//                {"I'm injured, Contract?","AAA-well if your injured you should call a legal asistant"},
+//                {"What is the Statute?","BBB-this is the statute #### "}};
+//        String[][] newArr = aiInterface.getTrainingData(new File("Training_Data.csv"));
+//        float[][] outputArr = aiInterface.setTrainingOutputs(newArr,7,3f);
+//        System.out.println("Did this explodedered? Answer: " + test);
+////        System.out.println("Heyro, I ams to tell you that I got the OLD datas: " + printDoubleString(testArr));
+//        System.out.println("Heyro, I ams to tell you that I got the NEW datas: " + printDoubleString(newArr));
+//        System.out.println("Hollo I am here with OUTPUTRESULTIES: " +
+//                printDoubleFloat(outputArr));
+//        System.out.println("\nHollo I am here with the array Length: " + outputArr.length);
     }
+
+    public static String printDoubleString(String[][] array){
+        String builder = "";
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                builder += (array[i][j] + ",");
+            }
+            builder += "\n";
+        }
+        return builder;
+    }
+    public static String printDoubleFloat(float[][] array){
+        String builder = "";
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                builder += (array[i][j] + ",");
+            }
+            builder += "\n";
+        }
+        return builder;
+    }
+
+
     public static ArrayList<Float> ConvertInput(String str){
         ArrayList<Float> inputs = new ArrayList<>();
 

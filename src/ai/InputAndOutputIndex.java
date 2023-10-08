@@ -1,5 +1,7 @@
 package src.ai;
 
+import java.io.File;
+
 public class InputAndOutputIndex {
     public static String[] keywords = new String[]{
             "Jurisdiction",
@@ -13,7 +15,33 @@ public class InputAndOutputIndex {
             "Statute",
             "When",
             "?",
-            "number"
+            "number",
+            "Morgan",
+            "case",
+            "evidence",
+            "settlement",
+            "lawyers",
+            "lawyer",
+            "trial",
+            "account",
+            "login",
+            "password",
+            "office",
+            "Offices",
+            "Office",
+            "offices",
+            "attorney",
+            "attorneys",
+            "outcome",
+            "outcomes",
+            "status",
+            "location",
+            "Location",
+            "deadline",
+            "result",
+            "current",
+            "state"
+
 
     };
     public static String[] Outputs = new String[]{
@@ -23,23 +51,13 @@ public class InputAndOutputIndex {
             "DDD",
             "EEE",
             "FFF",
-            "GGG",
-            "HHH",
-            "III",
-            "JJJ",
-            "KKK",
-            "LLL"
+            "GGG"
 
     };
-    public static String[][] TrainingData= new String[][]{
-        {"I'm injured, Contract?","AAA-well if your injured you should call a legal asistant"},
-        {"What is the Statute?","BBB-this is the statute #### "}
+    public static String[][] TrainingData= aiInterface.getTrainingData(new File("Training_Data.csv"));
+//            new String[][]{
+//        {"I'm injured, Contract?","AAA-well if your injured you should call a legal asistant"},
+//    };
+    public static float[][] TrainingDataOut=  aiInterface.setTrainingOutputs(TrainingData,7,3f);
 
-
-    };
-    public static float[][] TrainingDataOut= new float[][]{
-
-            {-1f,-1f,1f,-1f,-1f,-1f,-1f,-1f,-1f,-1f,-1f,-1f},
-            {-1f,-1f,-1f,-1f,-1f,-1f,-1f,-1f,-1f,1f,-1f,-1f},
-    };
 }
