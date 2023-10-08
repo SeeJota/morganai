@@ -1,5 +1,6 @@
 package src.ai;
 
+import java.io.IOException;
 import java.util.*;
 
 public class aiTraining{
@@ -199,8 +200,8 @@ public class aiTraining{
         }
         return weightsOfPrevB;
     }
-    public void saveTrainingData(){
-        aiInterface.writeNeuronToFile(aiInterface.FILE_PATH);
+    public void saveTrainingData() throws IOException {
+        aiInterface.writeNeuronToFile();
     }
     public void loadTrainingData(){
 

@@ -6,7 +6,7 @@ public class aiMain{
     public static void main(String[] args){
 
 
-        // read the files or what ever
+        // read the files
 
         aiTraining.RunNetwork(aiInterface.getNurons());
         ArrayList<neuron> outputs =  aiTraining.GetOutputNuronArray();
