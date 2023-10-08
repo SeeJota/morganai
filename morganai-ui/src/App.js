@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from  './components/Header/header';
+import Chatbody from  './components/Chatbody/chatbody';
+import Sidenav from  './components/Sidenav/sidenav';
+import ChatBox from  './components/Chatbody/ChatBox';
+import TypeIt from "typeit-react";
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Header></Header>
+        <Sidenav></Sidenav>
+        <Chatbody></Chatbody>
+        {/* <ChatBox></ChatBox> */}
+        {/* <TypeIt
+        options={{
+          strings: ["This will be typed!"],
+          speed: 10,
+          waitUntilVisible: true,
+        }}
+      /> */}
     </div>
   );
 }
