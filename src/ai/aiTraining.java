@@ -57,7 +57,7 @@ public class aiTraining{
 
 
 
-        System.out.println("Initializing network");
+        //System.out.println("Initializing network");
 
 
 
@@ -84,7 +84,7 @@ public class aiTraining{
         hiddenNuronLayer1 = new ArrayList<>();
         outputNurons = new ArrayList<>();
 
-        System.out.println("Initializing network");
+        //System.out.println("Initializing network");
 
 
 
@@ -126,7 +126,7 @@ public class aiTraining{
         //computes output nurons
         for (neuron n : outputNurons){
             n.compute();
-            System.out.println("nuron output = " + n.value);
+            //System.out.println("nuron output = " + n.value);
         }
 
     }
@@ -156,7 +156,7 @@ public class aiTraining{
             outputNurons = network.get(2);
         }
         else{
-            System.out.println("new network created");
+            //System.out.println("new network created");
             InitializeNetwork(12,15,6);
         }
 
@@ -177,13 +177,13 @@ public class aiTraining{
         //computes output nurons
         for (neuron n : outputNurons){
             n.compute();
-            System.out.println("nuron output = " + n.value);
+            //System.out.println("nuron output = " + n.value);
         }
 
 
     }
     public static void LoadNetworkValues(){
-        System.out.println("loaded values to network");
+        //System.out.println("loaded values to network");
     }
 
     public static void backPropigationOfBias(){
@@ -211,7 +211,7 @@ public class aiTraining{
         //start in Hidden layer (assuming there is only 1 hidden layer
         for(int i = 0; i < hiddenNuronLayer1.size(); i++){
 
-            System.out.println(" for hidden " + i + "bias has been totally changed to" + hiddenNuronLayer1.get(i).bias);
+            //System.out.println(" for hidden " + i + "bias has been totally changed to" + hiddenNuronLayer1.get(i).bias);
 
             ArrayList<neuron> proceedingNurons = hiddenNuronLayer1.get(i).getProceedingNurons();
             ArrayList<Float> weightsOfProceedingNurons = hiddenNuronLayer1.get(i).getWeightedInputOfInputNurons();
@@ -224,13 +224,13 @@ public class aiTraining{
             }
 
         }
-        System.out.println("");
+        //System.out.println("");
         //debug the weights for the inputs
         for(int i = 0; i < inputNurons.size() && i < outputNurons.size(); i++) {
 
 
-                System.out.println("initial correctioin val (-)" + aiFunctions.ErrorOfOutputLiniar().get(i));
-                System.out.println(" for input " + i + "bias has been totally changed to" + inputNurons.get(i).bias);
+                //System.out.println("initial correctioin val (-)" + aiFunctions.ErrorOfOutputLiniar().get(i));
+                //System.out.println(" for input " + i + "bias has been totally changed to" + inputNurons.get(i).bias);
         }
     }
     public static ArrayList<Float> createWeights(int count){

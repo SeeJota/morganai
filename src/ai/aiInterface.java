@@ -8,7 +8,7 @@ import java.util.Map;
 public class aiInterface{
     static File file = new File("neuron_info.txt");
     public static void main(String[] args){
-        System.out.println("hellowowofwfoerhgerdoifngbvodfkbnhdofbnhdfobghnfd");
+        //System.out.println("hellowowofwfoerhgerdoifngbvodfkbnhdofbnhdfobghnfd");
 
 
 
@@ -24,7 +24,7 @@ public class aiInterface{
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             file.delete();
             oos.writeObject(getNurons());
-            System.out.println(getNurons().get(0));
+            //System.out.println(getNurons().get(0));
             oos.flush();
             oos.close();
         } catch( IOException e){
@@ -36,12 +36,12 @@ public class aiInterface{
         ArrayList<ArrayList<neuron>> returnal = null;
         try (FileInputStream fis = new FileInputStream(file); //"/data/neuron_info.csv"
              ObjectInputStream ois = new ObjectInputStream(fis)) {
-            System.out.println("I Readered");
+            //System.out.println("I Readered");
             returnal = (ArrayList<ArrayList<neuron>>) ois.readObject();
         }catch( IOException e) {
-            System.out.println("I fartered: " + e);
+            //System.out.println("I fartered: " + e);
         }catch( ClassNotFoundException e) {
-            System.out.println("I classerted");
+            //System.out.println("I classerted");
         }
 
         return returnal;
@@ -62,7 +62,7 @@ public class aiInterface{
             br.close();
 
         }catch(IOException e){
-            System.out.println("Hello I dieded when reading this CSV thingie: " + e);
+            //System.out.println("Hello I dieded when reading this CSV thingie: " + e);
         }
 
         String[][] output = new String[tempOutput.size()][2];
@@ -94,7 +94,7 @@ public class aiInterface{
                     break;
                 case "GGG":output[i] = new float[]{0f,0f,0f,0f,0f,0f,peak};
                     break;
-                default:System.out.println("The thing breaking is: " + strArr[1] +", with question: " + strArr[0]);
+                default:
                     output[i] = new float[]{43110};
                     break;
             }

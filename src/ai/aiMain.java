@@ -14,7 +14,7 @@ public class aiMain{
 
         // read the files
         String inputStr = "Morgan and Morgan?";
-        System.out.println("accociated inputs are ### " + ConvertInput(inputStr));
+        //System.out.println("accociated inputs are ### " + ConvertInput(inputStr));
         try {
             aiTraining.RunNetwork(aiInterface.readObjFromFile(),ConvertInput(inputStr));
         } catch (IOException e) {
@@ -27,7 +27,7 @@ public class aiMain{
         int nuronIndex = -1;
         nuronIndex = runNetwork(outputs);
         float uncertainty = getUncertainty(outputs);
-        System.out.println("It was neuron " + nuronIndex);// + " with an uncertainty of " + uncertainty);
+        //System.out.println("It was neuron " + nuronIndex);// + " with an uncertainty of " + uncertainty);
         ArrayList<ArrayList<neuron>> test = new ArrayList<>();
 
         try {
@@ -56,9 +56,9 @@ public class aiMain{
 
 
     }
-    public String getAiResponce(String inputStr){
+    public static String getAiResponce(String inputStr){
 
-        System.out.println("accociated inputs are ### " + ConvertInput(inputStr));
+        //System.out.println("accociated inputs are ### " + ConvertInput(inputStr));
         try {
             aiTraining.RunNetwork(aiInterface.readObjFromFile(),ConvertInput(inputStr));
         } catch (IOException e) {
@@ -71,7 +71,7 @@ public class aiMain{
         int nuronIndex = -1;
         nuronIndex = runNetwork(outputs);
         float uncertainty = getUncertainty(outputs);
-        System.out.println("It was neuron " + nuronIndex);// + " with an uncertainty of " + uncertainty);
+        //System.out.println("It was neuron " + nuronIndex);// + " with an uncertainty of " + uncertainty);
         ArrayList<ArrayList<neuron>> test = new ArrayList<>();
 
         try {
@@ -132,7 +132,7 @@ public class aiMain{
         //get the maximum value as the responce
         int maxNuronIndex = 0;
         for(int i = 0; i < outputs.size(); i++){
-            System.out.println("nuron "+ i +" val of "+outputs.get(i).value);
+            //System.out.println("nuron "+ i +" val of "+outputs.get(i).value);
             if(outputs.get(i).value > outputs.get(maxNuronIndex).value){
 
                 maxNuronIndex = i;
