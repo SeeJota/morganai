@@ -8,7 +8,7 @@ public class aiMain{
 
 
         // read the files
-        String inputStr = "Evidence ?";
+        String inputStr = "I'm injured, Contract?";
         System.out.println("accociated inputs are ### " + ConvertInput(inputStr));
         aiTraining.RunNetwork(aiInterface.getNurons(),ConvertInput(inputStr));
         ArrayList<neuron> outputs =  aiTraining.GetOutputNuronArray();

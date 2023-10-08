@@ -2,6 +2,7 @@ package src.ai;
 import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class aiFunctions {
 
@@ -43,7 +44,13 @@ public class aiFunctions {
         return output;
 
     }
-
+    public static ArrayList<Float> floatArrayToArrayList(float[] arr){
+        ArrayList<Float> output = new ArrayList<>();
+        for(float item: arr){
+            output.add(item);
+        }
+        return output;
+    }
 
 
 }

@@ -12,16 +12,25 @@ public class aiTraining{
     static ArrayList<ArrayList<neuron>> networkNeurons;
 
     public static void main(String[] args){
-        InitializeNetwork(5,15,4);
-        SetDesiredValues(new ArrayList<>(Arrays.asList(1f,0f,0f,1f)));
+        InitializeNetwork(InputAndOutputIndex.keywords.length,15,InputAndOutputIndex.Outputs.length);
+        networkNeurons = new ArrayList<>();
+        networkNeurons.add(inputNurons);
+        networkNeurons.add(hiddenNuronLayer1);
+        networkNeurons.add(outputNurons);
+        SetDesiredValues(aiFunctions.floatArrayToArrayList(InputAndOutputIndex.TrainingDataOut[0]));
         LoadNetworkValues();
         RunNetwork();
 
-        for(int i = 0; i < 200; i++){
+        for(int i = 0; i < 2000; i++){
             backPropigationOfBias();
-            RunNetwork();
+            RunNetwork(networkNeurons,aiMain.ConvertInput(InputAndOutputIndex.TrainingData[0][0]));
+            //RunNetwork(aiInterface.getNurons(),ConvertInput(inputStr));
         }
 
+        try{saveTrainingData();}
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
     public static ArrayList<neuron> GetOutputNuronArray(){
@@ -162,7 +171,7 @@ public class aiTraining{
         //computes output nurons
         for (neuron n : outputNurons){
             n.compute();
-            //System.out.println("nuron output = " + n.value);
+            System.out.println("nuron output = " + n.value);
         }
 
         networkNeurons = new ArrayList<>();

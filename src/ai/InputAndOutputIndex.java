@@ -37,9 +37,8 @@ public class InputAndOutputIndex {
 
 
     };
-    public static int[] TrainingDataOut= new int[]{
+    public static float[][] TrainingDataOut= new float[][]{
 
-            0,
-            3
+            {0f,0f,3f,0f,0f,0f,0f,0f,0f,0f,0f,0f}
     };
 }
