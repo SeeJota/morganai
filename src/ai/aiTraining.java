@@ -22,9 +22,14 @@ public class aiTraining{
         RunNetwork();
 
         for(int i = 0; i < 2000; i++){
-            backPropigationOfBias();
-            RunNetwork(networkNeurons,aiMain.ConvertInput(InputAndOutputIndex.TrainingData[0][0]));
-            //RunNetwork(aiInterface.getNurons(),ConvertInput(inputStr));
+            for(int j = 0; j < InputAndOutputIndex.TrainingData.length; j++){
+                SetDesiredValues(aiFunctions.floatArrayToArrayList(InputAndOutputIndex.TrainingDataOut[j]));
+
+                backPropigationOfBias();
+                RunNetwork(networkNeurons,aiMain.ConvertInput(InputAndOutputIndex.TrainingData[j][0]));
+                //RunNetwork(aiInterface.getNurons(),ConvertInput(inputStr));
+            }
+
         }
 
         try{saveTrainingData();}
