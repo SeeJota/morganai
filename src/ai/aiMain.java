@@ -53,7 +53,7 @@ public class aiMain{
 //                printDoubleFloat(outputArr));
 //        System.out.println("\nHollo I am here with the array Length: " + outputArr.length);
 
-
+        System.out.println(getAiResponce("help case"));
 
     }
     public static String getAiResponce(String inputStr){
@@ -126,6 +126,11 @@ public class aiMain{
         return count;
     }
     public static int runNetwork(ArrayList<neuron> outputs){
+
+        //randomize a bit
+        for(int i = 0; i < outputs.size(); i++){
+            outputs.get(i).value+=(float)Math.random();
+        }
 
 
 

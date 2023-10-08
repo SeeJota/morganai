@@ -21,7 +21,7 @@ public class aiTraining{
         LoadNetworkValues();
         RunNetwork();
 
-        for(int i = 0; i < 10000; i++){
+        for(int i = 0; i < 1000; i++){
             for(int j = 0; j < InputAndOutputIndex.TrainingData.length; j++){
                 int x = (int)(Math.random()*InputAndOutputIndex.TrainingData.length);
                 SetDesiredValues(aiFunctions.floatArrayToArrayList(InputAndOutputIndex.TrainingDataOut[x]));
