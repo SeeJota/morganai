@@ -8,6 +8,8 @@ public class aiTraining{
     private static ArrayList<Float> DesiredValues;
     private static ArrayList<neuron> outputNurons;
 
+    static ArrayList<ArrayList<neuron>> networkNeurons;
+
     public static void main(String[] args){
         InitializeNetwork(5,13,4);
         SetDesiredValues(new ArrayList<>(Arrays.asList(1f,0f,0f,1f)));
@@ -28,6 +30,10 @@ public class aiTraining{
         return DesiredValues;
         //ArrayList<Float> output =  new ArrayList<>(Arrays.asList(0f,1f));
         //return output;
+        //return DesiredValues;
+        //return DesiredValues;
+        ArrayList<Float> output =  new ArrayList<>(Arrays.asList(0f,1f));
+        return output;
     }
 
     public static void SetDesiredValues(ArrayList<Float> arr){
