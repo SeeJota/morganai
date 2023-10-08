@@ -142,7 +142,7 @@ public class aiTraining{
         }
         else{
             System.out.println("new network created");
-            InitializeNetwork(5,15,4);
+            InitializeNetwork(12,15,6);
         }
 
 

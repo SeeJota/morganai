@@ -8,8 +8,9 @@ public class aiMain{
 
 
         // read the files
-        ArrayList<Float> inputs = new ArrayList<>(Arrays.asList(1f,0f,0f,1f));
-        aiTraining.RunNetwork(aiInterface.getNurons(),inputs);
+        String inputStr = "Evidence ?";
+        System.out.println("accociated inputs are ### " + ConvertInput(inputStr));
+        aiTraining.RunNetwork(aiInterface.getNurons(),ConvertInput(inputStr));
         ArrayList<neuron> outputs =  aiTraining.GetOutputNuronArray();
 
         int nuronIndex = -1;
@@ -19,6 +20,23 @@ public class aiMain{
         System.out.println("It was neuron " + nuronIndex + " with an uncertainty of " + uncertainty);
 
 
+    }
+    public static ArrayList<Float> ConvertInput(String str){
+        ArrayList<Float> inputs = new ArrayList<>();
+
+        for(int i =0; i<InputAndOutputIndex.keywords.length;i++){
+            inputs.add((float)lookForWord(str,InputAndOutputIndex.keywords[i])/str.length()*InputAndOutputIndex.keywords[i].length());
+        }
+        return  inputs;
+    }
+    public static int lookForWord(String str, String word) {
+        int count = 0;
+        for (int i = 0; i <= str.length() - word.length(); i++) {
+            if (str.substring(i, i + word.length()).equals(word)) {
+                count++;
+            }
+        }
+        return count;
     }
     public static int runNetwork(ArrayList<neuron> outputs){
 

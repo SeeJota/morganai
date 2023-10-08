@@ -1,7 +1,7 @@
 package src.ai;
 
 public class InputAndOutputIndex {
-    String[] keywords = new String[]{
+    public static String[] keywords = new String[]{
             "Jurisdiction",
             "Liability",
             "Litigation",
@@ -16,7 +16,7 @@ public class InputAndOutputIndex {
             "number"
 
     };
-    String[] Outputs = new String[]{
+    public static String[] Outputs = new String[]{
             "AAA",
             "BBB",
             "CCC",
@@ -31,5 +31,15 @@ public class InputAndOutputIndex {
             "LLL"
 
     };
+    public static String[][] TrainingData= new String[][]{
+        {"I'm injured, Contract?","AAA-well if your injured you should call a legal asistant"},
+        {"What is the Statute?","BBB-this is the statute #### "}
 
+
+    };
+    public static int[] TrainingDataOut= new int[]{
+
+            0,
+            3
+    };
 }
