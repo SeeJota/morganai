@@ -35,6 +35,7 @@ public class aiFunctions {
         ArrayList<Float> output = new ArrayList<Float>();
         int i = 0;
         for(neuron n : OutputNuronArray){
+
             float error = (OutputNuronArray.get(i).value - DesiredValuesArray.get(i));
             output.add(error);
             i++;

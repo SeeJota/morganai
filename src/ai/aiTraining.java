@@ -9,11 +9,12 @@ public class aiTraining{
     private static ArrayList<neuron> outputNurons;
 
     public static void main(String[] args){
-        InitializeNetwork();
+        InitializeNetwork(5,13,4);
+        SetDesiredValues(new ArrayList<>(Arrays.asList(1f,0f,0f,1f)));
         LoadNetworkValues();
         RunNetwork();
 
-        for(int i = 0; i < 100; i++){
+        for(int i = 0; i < 200; i++){
             backPropigationOfBias();
             RunNetwork();
         }
@@ -24,14 +25,17 @@ public class aiTraining{
         return outputNurons;
     }
     public static ArrayList<Float> GetDesiredValuesArray(){
-        //return DesiredValues;
-        ArrayList<Float> output =  new ArrayList<>(Arrays.asList(0f,1f));
-        return output;
+        return DesiredValues;
+        //ArrayList<Float> output =  new ArrayList<>(Arrays.asList(0f,1f));
+        //return output;
     }
 
-    public static void SetDesiredValues(){
+    public static void SetDesiredValues(ArrayList<Float> arr){
         //same length as output nurons
+
         DesiredValues = new ArrayList<>(Arrays.asList(1f,1f));
+        if(arr != null)
+            DesiredValues = arr;
     }
     public static void InitializeNetwork(){
 
@@ -57,6 +61,44 @@ public class aiTraining{
 
         outputNurons = new ArrayList<>(Arrays.asList(new neuron(0f,hiddenNuronLayer1, new ArrayList<Float>(Arrays.asList(.2f,.1f,.5f))),
                                                      new neuron(0f,hiddenNuronLayer1, new ArrayList<Float>(Arrays.asList(.2f,.1f,.2f)))));
+    }
+    public static void InitializeNetwork(int countOfinputNurons, int countOfHiddenNurons, int countOfOutputNurons){
+
+        inputNurons = new ArrayList<>();
+        hiddenNuronLayer1 = new ArrayList<>();
+        outputNurons = new ArrayList<>();
+
+        System.out.println("Initializing network");
+
+
+
+        //set up basic net work
+
+        //initializing inputs
+        for(int i = 0; i < countOfinputNurons; i++){
+            inputNurons.add(new neuron());
+        }
+        //initializing input values
+        for (neuron n : inputNurons){
+            n.value = 1f;
+            //n.initialize();
+        }
+        //initialize hiddens weight percentages
+
+
+        //initialize hiddens
+        for(int i = 0; i < countOfHiddenNurons; i++){
+            //hiddenNuronLayer1.add(new neuron(0f,inputNurons,new ArrayList<Float>(Arrays.asList(.2f,.4f))));
+            //randomize weights to avoid semmetry
+            hiddenNuronLayer1.add(new neuron(0f,inputNurons,createWeights(inputNurons.size())));
+        }
+        //initialize outputs
+        for(int i = 0; i < countOfOutputNurons; i++){
+            //outputNurons.add(new neuron(0f,hiddenNuronLayer1,new ArrayList<Float>(Arrays.asList(.2f,.4f))));
+            //randomize weights to avoid semmetry
+            outputNurons.add(new neuron(0f,hiddenNuronLayer1,createWeights(hiddenNuronLayer1.size())));
+        }
+
     }
     public static void RunNetwork(){
 
@@ -133,12 +175,29 @@ public class aiTraining{
         }
         System.out.println("");
         //debug the weights for the inputs
-        for(int i = 0; i < inputNurons.size(); i++) {
+        for(int i = 0; i < inputNurons.size() && i < outputNurons.size(); i++) {
 
 
                 System.out.println("initial correctioin val (-)" + aiFunctions.ErrorOfOutputLiniar().get(i));
                 System.out.println(" for input " + i + "bias has been totally changed to" + inputNurons.get(i).bias);
         }
+    }
+    public static ArrayList<Float> createWeights(int count){
+        ArrayList<Float> weightsOfPrevA = new ArrayList<>();
+        float sumOfPrev = 0f;
+        for(int i = 0; i < count; i++){
+
+            float x = (float)Math.random();
+            weightsOfPrevA.add(x);
+            sumOfPrev+=x;
+        }
+        ArrayList<Float> weightsOfPrevB = new ArrayList<>();
+        for(int i = 0; i < count; i++){
+
+
+            weightsOfPrevB.add(weightsOfPrevA.get(i)/sumOfPrev);
+        }
+        return weightsOfPrevB;
     }
     public void saveTrainingData(){
 
