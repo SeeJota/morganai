@@ -9,7 +9,7 @@ public class aiMain{
 
 
         // read the files
-        String inputStr = "I'm injured, Contract?";
+        String inputStr = "Contract";
         System.out.println("accociated inputs are ### " + ConvertInput(inputStr));
         try {
             aiTraining.RunNetwork(aiInterface.readObjFromFile(),ConvertInput(inputStr));
@@ -23,7 +23,7 @@ public class aiMain{
         int nuronIndex = -1;
         nuronIndex = runNetwork(outputs);
         float uncertainty = getUncertainty(outputs);
-        System.out.println("It was neuron " + nuronIndex + " with an uncertainty of " + uncertainty);
+        System.out.println("It was neuron " + nuronIndex);// + " with an uncertainty of " + uncertainty);
         ArrayList<ArrayList<neuron>> test = new ArrayList<>();
 
         try {

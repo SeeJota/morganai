@@ -12,7 +12,7 @@ public class aiTraining{
     static ArrayList<ArrayList<neuron>> networkNeurons;
 
     public static void main(String[] args){
-        InitializeNetwork(InputAndOutputIndex.keywords.length,15,InputAndOutputIndex.Outputs.length);
+        InitializeNetwork(InputAndOutputIndex.keywords.length,18,InputAndOutputIndex.Outputs.length);
         networkNeurons = new ArrayList<>();
         networkNeurons.add(inputNurons);
         networkNeurons.add(hiddenNuronLayer1);
@@ -21,7 +21,14 @@ public class aiTraining{
         LoadNetworkValues();
         RunNetwork();
 
-        for(int i = 0; i < 2000; i++){
+        for(int i = 0; i < 100000; i++){
+            SetDesiredValues(aiFunctions.floatArrayToArrayList(InputAndOutputIndex.TrainingDataOut[1]));
+
+            backPropigationOfBias();
+            RunNetwork(networkNeurons,aiMain.ConvertInput(InputAndOutputIndex.TrainingData[1][0]));
+
+            SetDesiredValues(aiFunctions.floatArrayToArrayList(InputAndOutputIndex.TrainingDataOut[0]));
+
             backPropigationOfBias();
             RunNetwork(networkNeurons,aiMain.ConvertInput(InputAndOutputIndex.TrainingData[0][0]));
             //RunNetwork(aiInterface.getNurons(),ConvertInput(inputStr));
